@@ -21,11 +21,11 @@ public class CSVAST
 	{
 		this.edgeRows.add(row);
 	}
-	
+
 	public Iterator<KeyedCSVRow> nodeIterator() {
 		return this.nodeRows.iterator();
 	}
-	
+
 	public Iterator<KeyedCSVRow> edgeIterator() {
 		return this.edgeRows.iterator();
 	}
@@ -34,10 +34,24 @@ public class CSVAST
 	{
 		return this.nodeRows.size();
 	}
-	
+
 	public int getNumberOfEdges()
 	{
 		return this.edgeRows.size();
 	}
+
+    public String toString() {
+        String ret = "";
+        for(KeyedCSVRow elem : nodeRows) {
+            ret += elem.toString();
+            ret += "\n";
+        }
+        ret += "\n";
+        for(KeyedCSVRow elem : edgeRows) {
+            ret += elem.toString();
+            ret += "\n";
+        }
+        return ret;
+    }
 
 }

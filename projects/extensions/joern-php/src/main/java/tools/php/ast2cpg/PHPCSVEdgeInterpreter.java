@@ -597,27 +597,35 @@ public class PHPCSVEdgeInterpreter implements CSVRowInterpreter
 
 		switch (childnum)
 		{
-			case 0: // params child
-				startNode.setParameterList((ParameterList)endNode);
-				break;
-			case 1: // NULL child
-				startNode.addChild(endNode);
-				break;
-			case 2: // stmts child: either CompoundStatement or NULL
-				if( endNode instanceof NullNode)
-					startNode.addChild(endNode);
-				else
-					startNode.setContent((CompoundStatement)endNode);
-				break;
-			case 3: // returnType child: either Identifier or NULL node
-				if( endNode instanceof NullNode)
-					startNode.addChild(endNode);
-				else
-					startNode.setReturnType((Identifier)endNode);
-				break;
-
-			default:
-				errno = 1;
+        case 0:  // since Version 50 of ast-parse the first child is the function name
+            startNode.setName(endNode.getEscapedCodeStr());
+            break;
+        case 1:  // since Version 50 of ast-parse the second child is the doccomment
+            startNode.setDocComment(endNode.getEscapedCodeStr());
+            break;
+        case 2: // params child
+            startNode.setParameterList((ParameterList)endNode);
+            break;
+            /* case 3: // NULL child was (apparently dropped past version 50 of ast-parse
+            startNode.addChild(endNode);
+            break;
+            */
+        case 3: // stmts child: either CompoundStatement or NULL
+            if( endNode instanceof NullNode)
+                startNode.addChild(endNode);
+            else
+                startNode.setContent((CompoundStatement)endNode);
+            break;
+        case 4: // returnType child: either Identifier or NULL node
+            if( endNode instanceof NullNode)
+                startNode.addChild(endNode);
+            else
+                startNode.setReturnType((Identifier)endNode);
+            break;
+        case 5: // the fifth child seems to be the declaration id since Version 50? (not sure if ever needed)
+            break;
+        default:
+            errno = 1;
 		}
 
 		return errno;
@@ -629,24 +637,31 @@ public class PHPCSVEdgeInterpreter implements CSVRowInterpreter
 
 		switch (childnum)
 		{
-			case 0: // extends child: either Identifier or NULL node
-				if( endNode instanceof NullNode)
-					startNode.addChild(endNode);
-				else
-					startNode.setExtends((Identifier)endNode);
-				break;
-			case 1: // implements child: either IdentifierList or NULL node
-				if( endNode instanceof NullNode)
-					startNode.addChild(endNode);
-				else
-					startNode.setImplements((IdentifierList)endNode);
-				break;
-			case 2: // toplevel child
-				startNode.setTopLevelFunc((TopLevelFunctionDef)endNode);
-				break;
-
-			default:
-				errno = 1;
+        case 0: // since Version 50 of ast-parse the first child is the class name
+            startNode.setName(endNode.getEscapedCodeStr());
+            break;
+        case 1: // since Version 50 of ast-parse the second child is the doccomment
+            startNode.setDocComment(endNode.getEscapedCodeStr());
+            break;
+        case 2: // extends child: either Identifier or NULL node
+            if( endNode instanceof NullNode)
+                startNode.addChild(endNode);
+            else
+                startNode.setExtends((Identifier)endNode);
+            break;
+        case 3: // implements child: either IdentifierList or NULL node
+            if( endNode instanceof NullNode)
+                startNode.addChild(endNode);
+            else
+                startNode.setImplements((IdentifierList)endNode);
+            break;
+        case 4: // toplevel child
+            startNode.setTopLevelFunc((TopLevelFunctionDef)endNode);
+            break;
+        case 5: // the fifth child seems to be the declaration id since Version 50? (not sure if ever needed)
+            break;
+        default:
+            errno = 1;
 		}
 
 		return errno;

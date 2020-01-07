@@ -11,13 +11,13 @@ public class ClassExpression extends Expression
 	{
 		return this.classDef;
 	}
-	
+
 	public void setClassDef(ClassDef classDef)
-	{	
+	{
 		this.classDef = classDef;
 		super.addChild(classDef);
 	}
-	
+
 	// TODO probably, more methods than only getEscapedCodeStr() should "forward" the call
 	// to the PHPClassDef. For instance, calls to obtain the node id, etc. Test this!
 	public String getEscapedCodeStr() {

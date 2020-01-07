@@ -33,7 +33,7 @@ public class Main {
 
 	// converters
 	static CSVFunctionExtractor extractor = new CSVFunctionExtractor();
-	//static PHPCFGFactory cfgFactory = new PHPCFGFactory();
+	// static PHPCFGFactory cfgFactory = new PHPCFGFactory();
 	static ASTToCFGConverter ast2cfgConverter = new ASTToCFGConverter();
 	static CFGToUDGConverter cfgToUDG = new CFGToUDGConverter();
 	static CFGAndUDGToDefUseCFG udgAndCfgToDefUseCFG = new CFGAndUDGToDefUseCFG();

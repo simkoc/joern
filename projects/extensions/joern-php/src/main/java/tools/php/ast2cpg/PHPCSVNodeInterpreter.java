@@ -665,6 +665,7 @@ public class PHPCSVNodeInterpreter implements CSVRowInterpreter
 		String name = row.getFieldForKey(PHPCSVNodeTypes.NAME);
 		String doccomment = row.getFieldForKey(PHPCSVNodeTypes.DOCCOMMENT);
 
+
 		newNode.setProperty(PHPCSVNodeTypes.TYPE.getName(), type);
 		newNode.setFlags(flags);
 		CodeLocation codeloc = new CodeLocation();

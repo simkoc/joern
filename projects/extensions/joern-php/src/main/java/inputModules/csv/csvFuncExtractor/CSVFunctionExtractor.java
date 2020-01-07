@@ -56,21 +56,26 @@ public class CSVFunctionExtractor
 	public FunctionDefBase getNextFunction()
 			throws IOException, InvalidCSVFile
 	{
-		if( csvFifoQueue.isEmpty()) {
+        CSVAST csvAST = null;
+        FunctionDefBase function = null;
+        try {
+            if( csvFifoQueue.isEmpty()) {
 
-			// there are no functions in the queue, let's get some
-			assert csvStack.empty() : "There are unfinished CSVASTs on the stack and they are not going to be converted.";
-			addNodeRowsUntilNextFile();
-			addEdgeRowsUntilNextFile();
-		}
+                // there are no functions in the queue, let's get some
+                assert csvStack.empty() : "There are unfinished CSVASTs on the stack and they are not going to be converted.";
+                addNodeRowsUntilNextFile();
+                addEdgeRowsUntilNextFile();
+            }
 
-		FunctionDefBase function = null;
-
-		if( !csvFifoQueue.isEmpty()) {
-
-			CSVAST csvAST = csvFifoQueue.remove();
-			function = csv2ast.convert(csvAST);
-		}
+            if( !csvFifoQueue.isEmpty()) {
+                //CSVAST csvAST = csvFifoQueue.remove();
+                csvAST = csvFifoQueue.remove();
+                function = csv2ast.convert(csvAST);
+            }
+        } catch(java.lang.ClassCastException e) {
+            System.out.println(csvAST.toString());
+            throw e;
+        }
 
 		return function;
 	}

@@ -8,7 +8,7 @@ import inputModules.csv.KeyedCSV.CSVKey;
 public class PHPCSVNodeTypes
 {
 	/* node row keys */
-	
+
 	public static final CSVKey NODE_ID = new CSVKey("id","int");
 	// node labels (either Filesystem, AST or Artificial)
 	public static final CSVKey LABEL = new CSVKey("labels","label");
@@ -29,15 +29,15 @@ public class PHPCSVNodeTypes
 	public static final CSVKey CLASSNAME = new CSVKey("classname");
 	public static final CSVKey NAMESPACE = new CSVKey("namespace");
 
-	
+
 	/* node labels */
 	public static final String LABEL_FS = "Filesystem";
 	public static final String LABEL_AST = "AST";
 	public static final String LABEL_ART = "Artificial";
-	
-	
+
+
 	/* node types */
-	
+
 	// directory/file types
 	public static final String TYPE_FILE = "File";
 	public static final String TYPE_DIRECTORY = "Directory";
@@ -49,7 +49,7 @@ public class PHPCSVNodeTypes
 	// (e.g., a function node that does not specify its return type in
 	// its declaration; see TestPHPCSVASTBuilderMinimal for more examples.)
 	public static final String TYPE_NULL = "NULL";
-	
+
 	// primary expressions (leafs)
 	public static final String TYPE_INTEGER = "integer";
 	public static final String TYPE_DOUBLE = "double";
@@ -101,7 +101,7 @@ public class PHPCSVNodeTypes
 	public static final String TYPE_POST_INC = "AST_POST_INC";
 	public static final String TYPE_POST_DEC = "AST_POST_DEC";
 	public static final String TYPE_YIELD_FROM = "AST_YIELD_FROM";
-	
+
 	// statements
 	public static final String TYPE_GLOBAL = "AST_GLOBAL";
 	public static final String TYPE_UNSET = "AST_UNSET";
@@ -135,7 +135,7 @@ public class PHPCSVNodeTypes
 	public static final String TYPE_INSTANCEOF = "AST_INSTANCEOF";
 	public static final String TYPE_YIELD = "AST_YIELD";
 	public static final String TYPE_COALESCE = "AST_COALESCE";
-	
+
 	// statements
 	public static final String TYPE_STATIC = "AST_STATIC";
 	public static final String TYPE_WHILE = "AST_WHILE";
@@ -189,9 +189,9 @@ public class PHPCSVNodeTypes
 	public static final String TYPE_TRAIT_ADAPTATIONS = "AST_TRAIT_ADAPTATIONS";
 	public static final String TYPE_USE = "AST_USE";
 
-	
+
 	/* node flags */
-	
+
 	// flags for TYPE_ARRAY_ELEM and TYPE_CLOSURE_VAR (exclusive)
 	public static final String FLAG_BY_REFERENCE = "BY_REFERENCE"; // custom, see phpjoern commit 95cdc6b6de1c4b973775a97b90e8bf41c90f629b
 
