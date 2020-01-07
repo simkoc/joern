@@ -29,22 +29,24 @@ task joernTools(type: Exec) {
 
 // Copy extensions and plugins into Octopus plugin directory
 
-task deploy(dependsOn: build) << {
-    copy {
-        into "projects/octopus/plugins"
-        from fileTree("projects/plugins").files
-        include '**/*.jar'
-        exclude '**/*-plain.jar'
-        includeEmptyDirs = false
-    }
+task deploy(dependsOn: build) {
+     doLast {
+         copy {
+            into "projects/octopus/plugins"
+            from fileTree("projects/plugins").files
+            include '**/*.jar'
+            exclude '**/*-plain.jar'
+            includeEmptyDirs = false
+            }
 
-    copy {
-        into "projects/octopus/extensions"
-        from fileTree("projects/extensions").files
-        include '**/*.jar'
-	exclude '**/lucene-core-3.6.2.jar'
-	exclude '**/*-plain.jar'
-        includeEmptyDirs = false
+        copy {
+           into "projects/octopus/extensions"
+           from fileTree("projects/extensions").files
+           include '**/*.jar'
+  	       exclude '**/lucene-core-3.6.2.jar'
+	       exclude '**/*-plain.jar'
+           includeEmptyDirs = false
+        }
     }
 
 }
@@ -53,7 +55,7 @@ dependencies{
 	compile group: 'com.tunnelvisionlabs', name: 'antlr4-runtime', version: '4.5.3'
 	compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
 	compile group: 'org.apache.commons', name: 'commons-csv', version: '1.2'
-	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'	
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
 	compile group: 'junit', name: 'junit', version: '4.12'
 }
 
