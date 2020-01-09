@@ -15,7 +15,7 @@ public class PropertyExpression extends MemberAccess
 		this.objectExpression = objectExpression;
 		super.addChild(objectExpression);
 	}
-	
+
 	public Expression getPropertyExpression()
 	{
 		return this.propertyExpression;
