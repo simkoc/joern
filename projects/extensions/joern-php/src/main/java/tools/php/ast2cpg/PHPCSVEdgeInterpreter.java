@@ -1973,11 +1973,10 @@ public class PHPCSVEdgeInterpreter implements CSVRowInterpreter
 	private int handleCatch( CatchStatement startNode, ASTNode endNode, int childnum)
 	{
 		int errno = 0;
-
 		switch (childnum)
 		{
 			case 0: // exception child: Identifier node
-				startNode.setExceptionIdentifier((Identifier)endNode);
+				startNode.setExceptionIdentifier((IdentifierList)endNode);
 				break;
 			case 1: // var child: Variable node
 				startNode.setVariable((Variable)endNode);
