@@ -14,24 +14,24 @@ public class PropertyElement extends Statement
 	{
 		return this.name;
 	}
-	
+
 	public void setNameChild(StringExpression name)
 	{
 		this.name = name;
 		super.addChild(name);
 	}
-	
+
 	public Expression getDefault()
 	{
 		return this.defaultvalue;
 	}
-	
+
 	public void setDefault(Expression defaultvalue)
 	{
 		this.defaultvalue = defaultvalue;
 		super.addChild(defaultvalue);
 	}
-	
+
 	public String getDocComment() {
 		return getProperty(ASTNodeProperties.DOCCOMMENT);
 	}
