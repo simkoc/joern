@@ -15,7 +15,7 @@ public class ClassConstantExpression extends MemberAccess
 		this.classExpression = classExpression;
 		super.addChild(classExpression);
 	}
-	
+
 	public StringExpression getConstantName()
 	{
 		return this.constantName;
