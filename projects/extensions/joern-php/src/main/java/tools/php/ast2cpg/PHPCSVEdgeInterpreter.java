@@ -2130,7 +2130,12 @@ public class PHPCSVEdgeInterpreter implements CSVRowInterpreter
 
 	private int handleArray( ArrayExpression startNode, ASTNode endNode, int childnum)
 	{
-		startNode.addArrayElement((ArrayElement)endNode);
+        if ( endNode instanceof NullNode) {
+            startNode.addChild(endNode);
+        } else {
+            //System.out.println(endNode);
+            startNode.addArrayElement((ArrayElement)endNode);
+        }
 
 		return 0;
 	}
