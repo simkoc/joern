@@ -281,7 +281,10 @@ public class PHPCSVEdgeInterpreter implements CSVRowInterpreter
 			case PHPCSVNodeTypes.TYPE_CALL:
 				errno = handleCall((CallExpressionBase)startNode, endNode, childnum);
 				break;
-			case PHPCSVNodeTypes.TYPE_CLASS_CONST:
+                // with php-ast AST_CLASS_CONST changed to AST_CLASS_NAME and this is reflected here
+                // but the underlying meaning and code did not change consequently only the case
+                // is touched but nothing more
+			case PHPCSVNodeTypes.TYPE_CLASS_NAME:
 				errno = handleClassConstant((ClassConstantExpression)startNode, endNode, childnum);
 				break;
 			case PHPCSVNodeTypes.TYPE_ASSIGN:
@@ -1697,15 +1700,16 @@ public class PHPCSVEdgeInterpreter implements CSVRowInterpreter
 
 		switch (childnum)
 		{
-			case 0: // name child: StringExpression node
-				startNode.setNameChild((StringExpression)endNode);
-				break;
-			case 1: // value child: Expression node
-				startNode.setValue((Expression)endNode);
-				break;
-
-			default:
-				errno = 1;
+        case 0: // name child: StringExpression node
+            startNode.setNameChild((StringExpression)endNode);
+            break;
+        case 1: // value child: Expression node
+            startNode.setValue((Expression)endNode);
+            break;
+        case 2: // since ast-php version 50 declaration nodes have a declartion id child not sure if ever needed
+            break;
+        default:
+            errno = 1;
 		}
 
 		return errno;
