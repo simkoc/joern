@@ -269,10 +269,10 @@ public class PHPCSVNodeInterpreter implements CSVRowInterpreter
         case PHPCSVNodeTypes.TYPE_CALL:
             retval = handleCall(row, ast);
             break;
-            // deprecated as of php-ast version 70
-            // case PHPCSVNodeTypes.TYPE_CLASS_CONST:
-            //     retval = handleClassConstant(row, ast);
-            //     break;
+        case PHPCSVNodeTypes.TYPE_CLASS_CONST:
+            retval = handleClassConstant(row, ast);
+            break;
+            // exists as of ast-parse verison 70
         case PHPCSVNodeTypes.TYPE_CLASS_NAME:
             retval = handleClassName(row, ast);
             break;
