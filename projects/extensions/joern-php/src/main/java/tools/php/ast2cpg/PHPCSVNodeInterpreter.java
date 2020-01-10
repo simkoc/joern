@@ -117,326 +117,330 @@ public class PHPCSVNodeInterpreter implements CSVRowInterpreter
 		switch (type)
 		{
 			// null nodes (leafs)
-			case PHPCSVNodeTypes.TYPE_NULL:
-				retval = handleNull(row, ast);
-				break;
-
+        case PHPCSVNodeTypes.TYPE_NULL:
+            retval = handleNull(row, ast);
+            break;
+            
 			// primary expressions (leafs)
-			case PHPCSVNodeTypes.TYPE_INTEGER:
-				retval = handleInteger(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_DOUBLE:
-				retval = handleDouble(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_STRING:
-				retval = handleString(row, ast);
-				break;
-
+        case PHPCSVNodeTypes.TYPE_INTEGER:
+            retval = handleInteger(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_DOUBLE:
+            retval = handleDouble(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_STRING:
+            retval = handleString(row, ast);
+            break;
+            
 			// special nodes
-			case PHPCSVNodeTypes.TYPE_NAME:
-				retval = handleName(row, ast);
+        case PHPCSVNodeTypes.TYPE_NAME:
+            retval = handleName(row, ast);
 				break;
-			case PHPCSVNodeTypes.TYPE_CLOSURE_VAR:
-				retval = handleClosureVar(row, ast);
-				break;
-
+        case PHPCSVNodeTypes.TYPE_CLOSURE_VAR:
+            retval = handleClosureVar(row, ast);
+            break;
+            
 			// declaration nodes
-			case PHPCSVNodeTypes.TYPE_TOPLEVEL:
-				retval = handleTopLevelFunction(row, ast);
-				break;
+        case PHPCSVNodeTypes.TYPE_TOPLEVEL:
+            retval = handleTopLevelFunction(row, ast);
+            break;
 			case PHPCSVNodeTypes.TYPE_FUNC_DECL:
 				retval = handleFunction(row, ast);
 				break;
-			case PHPCSVNodeTypes.TYPE_CLOSURE:
-				retval = handleClosure(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_METHOD:
-				retval = handleMethod(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CLASS:
-				retval = handleClass(row, ast);
-				break;
-
+        case PHPCSVNodeTypes.TYPE_CLOSURE:
+            retval = handleClosure(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_METHOD:
+            retval = handleMethod(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CLASS:
+            retval = handleClass(row, ast);
+            break;
+            
 			// nodes without children (leafs)
 			// expressions
-			case PHPCSVNodeTypes.TYPE_MAGIC_CONST:
-				retval = handleMagicConst(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_TYPE:
-				retval = handleTypeHint(row, ast);
-				break;
-
+        case PHPCSVNodeTypes.TYPE_MAGIC_CONST:
+            retval = handleMagicConst(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_TYPE:
+            retval = handleTypeHint(row, ast);
+            break;
+            
 			// nodes with exactly 1 child
 			// expressions
-			case PHPCSVNodeTypes.TYPE_VAR:
-				retval = handleVariable(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CONST:
-				retval = handleConstant(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_UNPACK:
-				retval = handleUnpack(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CAST:
-				retval = handleCast(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_EMPTY:
-				retval = handleEmpty(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_ISSET:
-				retval = handleIsset(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_SHELL_EXEC:
-				retval = handleShellExec(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CLONE:
-				retval = handleClone(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_EXIT:
-				retval = handleExit(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_PRINT:
-				retval = handlePrint(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_INCLUDE_OR_EVAL:
-				retval = handleIncludeOrEval(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_UNARY_OP:
-				retval = handleUnaryOperation(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_PRE_INC:
-				retval = handlePreInc(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_PRE_DEC:
-				retval = handlePreDec(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_POST_INC:
-				retval = handlePostInc(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_POST_DEC:
-				retval = handlePostDec(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_YIELD_FROM:
-				retval = handleYieldFrom(row, ast);
-				break;
-
+        case PHPCSVNodeTypes.TYPE_VAR:
+            retval = handleVariable(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CONST:
+            retval = handleConstant(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_UNPACK:
+            retval = handleUnpack(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CAST:
+            retval = handleCast(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_EMPTY:
+            retval = handleEmpty(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_ISSET:
+            retval = handleIsset(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_SHELL_EXEC:
+            retval = handleShellExec(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CLONE:
+            retval = handleClone(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_EXIT:
+            retval = handleExit(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_PRINT:
+            retval = handlePrint(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_INCLUDE_OR_EVAL:
+            retval = handleIncludeOrEval(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_UNARY_OP:
+            retval = handleUnaryOperation(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_PRE_INC:
+            retval = handlePreInc(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_PRE_DEC:
+            retval = handlePreDec(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_POST_INC:
+            retval = handlePostInc(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_POST_DEC:
+            retval = handlePostDec(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_YIELD_FROM:
+            retval = handleYieldFrom(row, ast);
+            break;
+            
 			// statements
-			case PHPCSVNodeTypes.TYPE_GLOBAL:
-				retval = handleGlobal(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_UNSET:
-				retval = handleUnset(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_RETURN:
-				retval = handleReturn(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_LABEL:
-				retval = handleLabel(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_REF:
-				retval = handleReference(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_HALT_COMPILER:
-				retval = handleHaltCompiler(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_ECHO:
-				retval = handleEcho(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_THROW:
-				retval = handleThrow(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_GOTO:
-				retval = handleGoto(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_BREAK:
-				retval = handleBreak(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CONTINUE:
-				retval = handleContinue(row, ast);
-				break;
+        case PHPCSVNodeTypes.TYPE_GLOBAL:
+            retval = handleGlobal(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_UNSET:
+            retval = handleUnset(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_RETURN:
+            retval = handleReturn(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_LABEL:
+            retval = handleLabel(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_REF:
+            retval = handleReference(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_HALT_COMPILER:
+            retval = handleHaltCompiler(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_ECHO:
+            retval = handleEcho(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_THROW:
+            retval = handleThrow(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_GOTO:
+            retval = handleGoto(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_BREAK:
+            retval = handleBreak(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CONTINUE:
+            retval = handleContinue(row, ast);
+            break;
 
 			// nodes with exactly 2 children
 			// expressions
-			case PHPCSVNodeTypes.TYPE_DIM:
-				retval = handleArrayIndexing(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_PROP:
-				retval = handleProperty(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_STATIC_PROP:
-				retval = handleStaticProperty(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CALL:
-				retval = handleCall(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CLASS_CONST:
-				retval = handleClassConstant(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_ASSIGN:
-				retval = handleAssign(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_ASSIGN_REF:
-				retval = handleAssignByRef(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_ASSIGN_OP:
-				retval = handleAssignWithOp(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_BINARY_OP:
-				retval = handleBinaryOperation(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_ARRAY_ELEM:
-				retval = handleArrayElement(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_NEW:
-				retval = handleNew(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_INSTANCEOF:
-				retval = handleInstanceof(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_YIELD:
-				retval = handleYield(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_COALESCE:
-				retval = handleCoalesce(row, ast);
-				break;
+        case PHPCSVNodeTypes.TYPE_DIM:
+            retval = handleArrayIndexing(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_PROP:
+            retval = handleProperty(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_STATIC_PROP:
+            retval = handleStaticProperty(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CALL:
+            retval = handleCall(row, ast);
+            break;
+            // deprecated as of php-ast version 70
+            // case PHPCSVNodeTypes.TYPE_CLASS_CONST:
+            //     retval = handleClassConstant(row, ast);
+            //     break;
+        case PHPCSVNodeTypes.TYPE_CLASS_NAME:
+            retval = handleClassName(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_ASSIGN:
+            retval = handleAssign(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_ASSIGN_REF:
+            retval = handleAssignByRef(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_ASSIGN_OP:
+            retval = handleAssignWithOp(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_BINARY_OP:
+            retval = handleBinaryOperation(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_ARRAY_ELEM:
+            retval = handleArrayElement(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_NEW:
+            retval = handleNew(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_INSTANCEOF:
+            retval = handleInstanceof(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_YIELD:
+            retval = handleYield(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_COALESCE:
+            retval = handleCoalesce(row, ast);
+            break;
 
 			// statements
-			case PHPCSVNodeTypes.TYPE_STATIC:
-				retval = handleStaticVariable(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_WHILE:
-				retval = handleWhile(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_DO_WHILE:
-				retval = handleDo(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_IF_ELEM:
-				retval = handleIfElement(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_SWITCH:
-				retval = handleSwitch(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_SWITCH_CASE:
-				retval = handleSwitchCase(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_DECLARE:
-				retval = handleDeclare(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_PROP_ELEM:
-				retval = handlePropertyElement(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CONST_ELEM:
-				retval = handleConstantElement(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_USE_TRAIT:
-				retval = handleUseTrait(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_TRAIT_PRECEDENCE:
-				retval = handleTraitPrecedence(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_METHOD_REFERENCE:
-				retval = handleMethodReference(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_NAMESPACE:
-				retval = handleNamespace(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_USE_ELEM:
-				retval = handleUseElement(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_TRAIT_ALIAS:
-				retval = handleTraitAlias(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_GROUP_USE:
-				retval = handleGroupUse(row, ast);
-				break;
-
+        case PHPCSVNodeTypes.TYPE_STATIC:
+            retval = handleStaticVariable(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_WHILE:
+            retval = handleWhile(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_DO_WHILE:
+            retval = handleDo(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_IF_ELEM:
+            retval = handleIfElement(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_SWITCH:
+            retval = handleSwitch(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_SWITCH_CASE:
+            retval = handleSwitchCase(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_DECLARE:
+            retval = handleDeclare(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_PROP_ELEM:
+            retval = handlePropertyElement(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CONST_ELEM:
+            retval = handleConstantElement(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_USE_TRAIT:
+            retval = handleUseTrait(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_TRAIT_PRECEDENCE:
+            retval = handleTraitPrecedence(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_METHOD_REFERENCE:
+            retval = handleMethodReference(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_NAMESPACE:
+            retval = handleNamespace(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_USE_ELEM:
+            retval = handleUseElement(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_TRAIT_ALIAS:
+            retval = handleTraitAlias(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_GROUP_USE:
+            retval = handleGroupUse(row, ast);
+            break;
+            
 			// nodes with exactly 3 children
 			// expressions
-			case PHPCSVNodeTypes.TYPE_METHOD_CALL:
-				retval = handleMethodCall(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_STATIC_CALL:
-				retval = handleStaticCall(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CONDITIONAL:
-				retval = handleConditional(row, ast);
-				break;
-
+        case PHPCSVNodeTypes.TYPE_METHOD_CALL:
+            retval = handleMethodCall(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_STATIC_CALL:
+            retval = handleStaticCall(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CONDITIONAL:
+            retval = handleConditional(row, ast);
+            break;
+            
 			// statements
-			case PHPCSVNodeTypes.TYPE_TRY:
-				retval = handleTry(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CATCH:
-				retval = handleCatch(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_PARAM:
-				retval = handleParameter(row, ast);
-				break;
-
+        case PHPCSVNodeTypes.TYPE_TRY:
+            retval = handleTry(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CATCH:
+            retval = handleCatch(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_PARAM:
+            retval = handleParameter(row, ast);
+            break;
+            
 			// nodes with exactly 4 children
 			// statements
-			case PHPCSVNodeTypes.TYPE_FOR:
-				retval = handleFor(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_FOREACH:
-				retval = handleForEach(row, ast);
-				break;
-
+        case PHPCSVNodeTypes.TYPE_FOR:
+            retval = handleFor(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_FOREACH:
+            retval = handleForEach(row, ast);
+            break;
+            
 			// nodes with an arbitrary number of children
-			case PHPCSVNodeTypes.TYPE_ARG_LIST:
-				retval = handleArgumentList(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_LIST:
-				retval = handleList(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_ARRAY:
-				retval = handleArray(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_ENCAPS_LIST:
-				retval = handleEncapsList(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_EXPR_LIST:
-				retval = handleExpressionList(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_STMT_LIST:
-				retval = handleCompound(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_IF:
-				retval = handleIf(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_SWITCH_LIST:
-				retval = handleSwitchList(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CATCH_LIST:
-				retval = handleCatchList(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_PARAM_LIST:
-				retval = handleParameterList(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CLOSURE_USES:
-				retval = handleClosureUses(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_PROP_DECL:
-				retval = handlePropertyDeclaration(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CONST_DECL:
-				retval = handleConstantDeclaration(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_CLASS_CONST_DECL:
-				retval = handleClassConstantDeclaration(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_NAME_LIST:
-				retval = handleIdentifierList(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_TRAIT_ADAPTATIONS:
-				retval = handleTraitAdaptations(row, ast);
-				break;
-			case PHPCSVNodeTypes.TYPE_USE:
-				retval = handleUseStatement(row, ast);
-				break;
-
-			default:
-				retval = defaultHandler(row, ast);
+        case PHPCSVNodeTypes.TYPE_ARG_LIST:
+            retval = handleArgumentList(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_LIST:
+            retval = handleList(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_ARRAY:
+            retval = handleArray(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_ENCAPS_LIST:
+            retval = handleEncapsList(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_EXPR_LIST:
+            retval = handleExpressionList(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_STMT_LIST:
+            retval = handleCompound(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_IF:
+            retval = handleIf(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_SWITCH_LIST:
+            retval = handleSwitchList(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CATCH_LIST:
+            retval = handleCatchList(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_PARAM_LIST:
+            retval = handleParameterList(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CLOSURE_USES:
+            retval = handleClosureUses(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_PROP_DECL:
+            retval = handlePropertyDeclaration(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CONST_DECL:
+            retval = handleConstantDeclaration(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_CLASS_CONST_DECL:
+            retval = handleClassConstantDeclaration(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_NAME_LIST:
+            retval = handleIdentifierList(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_TRAIT_ADAPTATIONS:
+            retval = handleTraitAdaptations(row, ast);
+            break;
+        case PHPCSVNodeTypes.TYPE_USE:
+            retval = handleUseStatement(row, ast);
+            break;
+            
+        default:
+            retval = defaultHandler(row, ast);
 		}
 
 		return retval;
@@ -1572,8 +1576,35 @@ public class PHPCSVNodeInterpreter implements CSVRowInterpreter
 		return id;
 	}
 
+    // deprecated with php-ast version 70
+    @Deprecated
 	private long handleClassConstant(KeyedCSVRow row, ASTUnderConstruction ast)
 	{
+		ClassConstantExpression newNode = new ClassConstantExpression();
+
+		String type = row.getFieldForKey(PHPCSVNodeTypes.TYPE);
+		String flags = row.getFieldForKey(PHPCSVNodeTypes.FLAGS);
+		String lineno = row.getFieldForKey(PHPCSVNodeTypes.LINENO);
+		String childnum = row.getFieldForKey(PHPCSVNodeTypes.CHILDNUM);
+
+		newNode.setProperty(PHPCSVNodeTypes.TYPE.getName(), type);
+		newNode.setFlags(flags);
+		CodeLocation codeloc = new CodeLocation();
+		codeloc.startLine = Integer.parseInt(lineno);
+		newNode.setLocation(codeloc);
+		newNode.setProperty(PHPCSVNodeTypes.CHILDNUM.getName(), childnum);
+
+		long id = Long.parseLong(row.getFieldForKey(PHPCSVNodeTypes.NODE_ID));
+		ast.addNodeWithId(newNode, id);
+		newNode.setNodeId(id);
+
+		return id;
+	}
+
+    private long handleClassName(KeyedCSVRow row, ASTUnderConstruction ast)
+	{
+        // as only the name changed but not the behavior I keep the old code
+        // to not screw up the inner workings of joern
 		ClassConstantExpression newNode = new ClassConstantExpression();
 
 		String type = row.getFieldForKey(PHPCSVNodeTypes.TYPE);
